@@ -8,17 +8,17 @@ pipeline{
     }
     stage('Build Image'){
       steps{
-        bat 'docker build -t mywebsite.'
+        bat 'docker build -t mywebsite .'
 
       }
     }
-    stage('Stp old containers'){
+    stage('Stop old containers'){
       steps{
         bat 'docker stop mycont || exit 0'
         bat 'docker rm mycont || exit 0'
       }
     }
-    stage('Rum my image- containers'){
+    stage('Run my image-containers'){
       step{
         bat 'docker run -d -p 7000:80 --name mycont mywebsite'
       }
