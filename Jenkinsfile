@@ -1,7 +1,7 @@
 pipeline{
   agent any
   stages{
-    stage('Cheheckour'){
+    stage('Checkout'){
       steps{
         git url :'https://github.com/nikita-px/Dockerjenkins.git',branch:'main'
       }
@@ -19,7 +19,7 @@ pipeline{
       }
     }
     stage('Run my image-containers'){
-      step{
+      steps{
         bat 'docker run -d -p 7000:80 --name mycont mywebsite'
       }
     }
